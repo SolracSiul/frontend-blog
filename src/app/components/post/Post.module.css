@@ -1,0 +1,30 @@
+.comment{
+    width: 100%;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(255, 255, 255);
+}
+.comment > strong{
+    line-height: 1.6;
+}
+.comment textarea{
+    width: 100%;
+    border: 0;
+    resize: none;
+    background-color: rgba(17, 17, 17, 0.562);
+    padding: 12px;
+    height: 96px;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+.comment button[type=submit]{
+    padding: 16px 20px;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: 0;
+    transition: background-color 0.1s;
+    cursor: pointer;
+}
+.comment button[type=submit]:hover{
+    background-color: rgba(0, 0, 0, 0.466); 
+}
