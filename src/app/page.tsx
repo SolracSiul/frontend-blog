@@ -6,8 +6,7 @@ import { PostType } from './components/post/Post';
 import axiosFetch from './axios/config';
 import { useEffect, useState } from 'react';
 import CreatePost from './components/newpost/CreatePost';
-
-
+import { get } from 'http';
 
 export default function Home() {
   const [posts, setPosts] = useState<PostType[]>([]);
@@ -21,9 +20,14 @@ export default function Home() {
       } catch(error){
         console.log('erro', error)
       }
+      console.log('chamei o useEffect')
+  }
+  const reloadPosts = () =>{
+    getPosts();
   }
   useEffect(() => {
     getPosts();
+    
   }, [])
   return (
    <>
@@ -31,8 +35,8 @@ export default function Home() {
     <div className="max-w-[70rem] mt-24 my-[2rem] flex flex-col items-center justify-center mx-auto py-0 px-[1rem] md:grid grid-cols-3 gap-4 md:items-start">
           <Sidebar/>
           <main className='w-full md:col-span-2 flex flex-col gap-6'>
-            <CreatePost/>
-            {posts.map(post =>(
+            <CreatePost reloadPosts={reloadPosts}/>
+            {posts.reverse().map(post =>(
               <Post post={post} key={post.id}/>
             ))}           
           </main>
