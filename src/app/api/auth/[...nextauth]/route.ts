@@ -1,9 +1,8 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-
 const nextAuthOptions: NextAuthOptions = {
-    providers:[
+    providers: [
         CredentialsProvider({
             name: 'apipost',
             credentials:{
@@ -13,7 +12,7 @@ const nextAuthOptions: NextAuthOptions = {
             async authorize(credentials, req){
                 const response = await fetch('http://localhost:3001/login',{
                     method: 'POST',
-                    headers:{
+                    headers: {
                         'Content-type': 'application/json'
                     },
                     body: JSON.stringify({
@@ -25,21 +24,24 @@ const nextAuthOptions: NextAuthOptions = {
             if(user && response.ok){
                 return user
             }
-                return null 
+            return null
             }
+
         })
-    ], pages:{
-        signIn: '/'
+    ],
+    pages:{
+        signIn:'/'
     },
     callbacks:{
         async jwt({token, user}){
-            user && (token.user = user)
+            user && (token.user = user) 
             return token
         },
         async session({session, token}){
+            session = token.user as any
             return session
         }
-    }
+    },
 }
 
 const handler = NextAuth(nextAuthOptions)

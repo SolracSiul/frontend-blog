@@ -9,17 +9,6 @@ export interface Props{
 function CreatePost({reloadPosts}: Props) {
   const { register, handleSubmit, setValue, getValues, reset  } = useForm();
 
-    const getPosts =  async () =>{
-      try{
-        const response = await axiosFetch.get("/posts")
-        const data = response.data;
-
-        
-      } catch(error){
-        console.log('erro', error)
-      }
-      console.log('chamei o useEffect')
-  }
   const onSubmit = async (data: any) => {
     console.log('Dados do formulário a serem enviados:', data);
 

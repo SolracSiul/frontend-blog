@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-:focus{
-  outline: transparent;
-  box-shadow: 0 0 0 2px;
-
-}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -27,12 +17,11 @@
 }
 
 body {
-  background-color:#121212;
-  color: rgb(214, 202, 202);
-  -webkit-font-smoothing: antialised;
-}
-body, input, textarea, button{
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
