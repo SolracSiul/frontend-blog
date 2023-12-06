@@ -28,8 +28,7 @@ function Posts({session}: any) {
     }, [])
   return (
     <>
-      <h2>teste: {session.user.name}</h2>
-    <div className="max-w-[70rem] mt-24 my-[2rem] flex flex-col items-center justify-center mx-auto py-0 px-[1rem] md:grid grid-cols-3 gap-4 md:items-start">
+    <div className="max-w-[70rem] flex flex-col items-center justify-center mx-auto py-0 px-[1rem] md:grid grid-cols-3 gap-4 md:items-start">
           <Sidebar/>
           <main className='w-full md:col-span-2 flex flex-col gap-6'>
             <CreatePost reloadPosts={reloadPosts}/>
